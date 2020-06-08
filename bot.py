@@ -3,6 +3,7 @@ def main():
         user_name: str = ""
         user_age: int = 0
         user_num: int = 0
+        right_answer: str = "2"
 
         def __init__(self, bot_name: str, bot_birth_year: int):
             self.bot_name: str = bot_name
@@ -31,6 +32,14 @@ def main():
                 print(i, "!")
             print("Completed, have a nice day!")
 
+        def check_quiz_ans(self, user_ans: str) -> bool:
+            if user_ans == SimpleChattyBot.right_answer:
+                return True
+            return False
+
+        def goodbye(self):
+            print("Congratulations, have a nice day!")
+
     my_chatty_bot = SimpleChattyBot("Aid", 2020)
 
     my_chatty_bot.hello()
@@ -49,6 +58,23 @@ def main():
     print("Now I will prove to you that I can count to any number you want.")
     n: int = int(input("> "))
     my_chatty_bot.count_user_num(n)
+
+    print("Let's test your programming knowledge.")
+    print("Why do we use methods?")
+    print("1. To repeat a statement multiple times.")
+    print("2. To decompose a program into several small subroutines.")
+    print("3. To determine the execution time of a program.")
+    print("4. To interrupt the execution of a program.")
+    result: bool = False
+    while not result:
+        user_inp: str = input("> ")
+        result = my_chatty_bot.check_quiz_ans(user_inp)
+        if not result:
+            print("Please, try again.")
+    else:
+        print("Completed, have a nice day!")
+
+    my_chatty_bot.goodbye()
 
 
 if __name__ == "__main__":
