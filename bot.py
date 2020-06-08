@@ -2,6 +2,7 @@ def main():
     class SimpleChattyBot:
         user_name: str = ""
         user_age: int = 0
+        user_num: int = 0
 
         def __init__(self, bot_name: str, bot_birth_year: int):
             self.bot_name: str = bot_name
@@ -21,9 +22,14 @@ def main():
             SimpleChattyBot.user_name = user_name
             print(f"What a great name you have, {SimpleChattyBot.user_name}!")
 
-        def guess_age(self, r3, r5, r7):
+        def guess_age(self, r3: int, r5: int, r7: int):
             SimpleChattyBot.user_age = (r3 * 70 + r5 * 21 + r7 * 15) % 105
             print(f"Your age is {SimpleChattyBot.user_age}; that's a good time to start programming!")
+
+        def count_user_num(self, num: int):
+            for i in range(num + 1):
+                print(i, "!")
+            print("Completed, have a nice day!")
 
     my_chatty_bot = SimpleChattyBot("Aid", 2020)
 
@@ -39,6 +45,10 @@ def main():
     remainder_5: int = int(input("> "))
     remainder_7: int = int(input("> "))
     my_chatty_bot.guess_age(remainder_3, remainder_5, remainder_7)
+
+    print("Now I will prove to you that I can count to any number you want.")
+    n: int = int(input("> "))
+    my_chatty_bot.count_user_num(n)
 
 
 if __name__ == "__main__":
